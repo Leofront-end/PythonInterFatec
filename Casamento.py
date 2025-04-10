@@ -1,51 +1,56 @@
-noivo = set()
-noiva = set()
-while True:
-    nome = input()
-    if (nome == 'ACABOU'):
-        break
-    x,y = nome.split(';')
-    if (y == 'noivo'):
-        noivo.add(x)
+convidados_noivo = set()
+convidados_noiva = set()
+ 
+convite = input()
+ 
+while convite != 'ACABOU':
+    convidado, convidou = convite.split(';')
+    if convidou == 'noivo':
+        convidados_noivo.add(convidado)
     else:
-        noiva.add(x)
-
-lista = noivo | noiva
-Anoiva = noiva - noivo
-Anoivo = noivo - noiva
-ambos = noiva & noivo
-umDeles = noiva ^ noivo
-
-print("-"*20)
-print("LISTA FINAL")
-print("-"*20)
-for nome in lista:
-    print(nome)
-print("*")
-
-print("-"*20)
-print("APENAS NOIVA")
-print("-"*20)
-for nome in Anoiva:
-    print(nome)
-print("*")
-
-print("-"*20)
-print("APENAS NOIVO")
-print("-"*20)
-for nome in Anoivo:
-    print(nome)
-print("*")
-
-print("-"*20)
-print("POR AMBOS")
-print("-"*20)
-for nome in ambos:
-    print(nome)
-print("*")
-
-print("-"*20)
-print("POR APENAS UM DELES")
-print("-"*20)
-for nome in umDeles:
-    print(nome)
+        convidados_noiva.add(convidado)
+    convite = input()
+ 
+print('-' * 20)
+print('LISTA FINAL')
+print('-' * 20)
+convidados = list(convidados_noivo | convidados_noiva)
+convidados.sort()
+for convidado in convidados:
+    print(convidado)
+print('*')
+ 
+print('-' * 20)
+print('APENAS NOIVA')
+print('-' * 20)
+convidados = list(convidados_noiva - convidados_noivo)
+convidados.sort()
+for convidado in convidados:
+    print(convidado)
+print('*')
+ 
+print('-' * 20)
+print('APENAS NOIVO')
+print('-' * 20)
+convidados = list(convidados_noivo - convidados_noiva)
+convidados.sort()
+for convidado in convidados:
+    print(convidado)
+print('*')
+ 
+print('-' * 20)
+print('POR AMBOS')
+print('-' * 20)
+convidados = list(convidados_noivo & convidados_noiva)
+convidados.sort()
+for convidado in convidados:
+    print(convidado)
+print('*')
+ 
+print('-' * 20)
+print('POR APENAS UM DELES')
+print('-' * 20)
+convidados = list(convidados_noivo ^ convidados_noiva)
+convidados.sort()
+for convidado in convidados:
+    print(convidado)
